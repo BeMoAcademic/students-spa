@@ -8,17 +8,9 @@
 </template>
 
 <script>
+import FieldMixin from "./FieldMixin";
 export default {
     name: 'BaseTextarea',
-    props: {
-        label: {
-            type: String,
-            default: ''
-        },
-        modelValue: {
-            type: [String, Number],
-            default: ''
-        }
-    }
+    mixins: [FieldMixin]
 }
 </script>

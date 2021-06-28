@@ -20,20 +20,14 @@
   </select>
 </template>
 <script>
+import FieldMixin from "./FieldMixin";
 export default {
+  mixins: [FieldMixin],
   props: {
-    label: {
-      type: String,
-      default: "",
-    },
-    modelValue: {
-      type: [String, Number],
-      default: "",
-    },
     options: {
-        type: Array,
-        required: true
-    }
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>
