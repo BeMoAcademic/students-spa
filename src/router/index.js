@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Auth/Login.vue'
 import AuthMiddleware from "@/middleware/AuthMiddleware";
+import create from "@/store/web/create";
 
 const routes = [
 
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     beforeEnter: AuthMiddleware.guest,
     component: Login
@@ -72,7 +73,11 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes : [
+     routes,
+      ...create,
+
+  ]
 })
 
 export default router
