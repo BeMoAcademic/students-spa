@@ -1,11 +1,62 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Login from '../views/Auth/Login.vue'
+import AuthMiddleware from "@/middleware/AuthMiddleware";
 
 const routes = [
+
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Login',
+    beforeEnter: AuthMiddleware.guest,
+    component: Login
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: ''
+  },
+  {
+    path: '/password/reset/email',
+    name: 'PasswordSendReset',
+    component: ''
+  },
+  {
+    path: '/password/reset/:token',
+    name: 'PasswordPostReset',
+    component: ''
+  },
+  {
+    path: '/pdf',
+    name: 'Pdf',
+    component: ''
+  },
+  {
+    path: '/expired',
+    name: 'AccountExpired',
+    beforeEnter: AuthMiddleware.auth,
+    component: ''
+  },
+  {
+    path: '/profile/reset',
+    name: 'AccountExpired',
+    beforeEnter: AuthMiddleware.auth,
+    component: ''
+  },
+  {
+    path: '/forced/reset',
+    name: 'AccountExpired',
+    beforeEnter: AuthMiddleware.auth,
+    component: ''
+  },
+  {
+    path: '/typeform-webhook',
+    name: 'Webhook',
+    component: ''
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: ''
   },
   {
     path: '/about',
