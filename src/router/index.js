@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Auth/Login.vue'
 import AuthMiddleware from "@/middleware/AuthMiddleware";
+import Home from '../views/Home.vue'
+import Form from '../views/Form.vue'
 
 const routes = [
 
@@ -24,6 +26,11 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
+  },
+  {
+    path: '/forms',
+    name: 'Forms',
+    component: Form
   }
 ]
 
