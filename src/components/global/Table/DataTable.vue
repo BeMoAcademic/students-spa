@@ -3,7 +3,7 @@
     <template v-if="!onlyTable">
       <section class="table__header">
         <div>
-          <h5 class="title is-size-6" v-text="title"></h5>
+          <slot name="title" />
         </div>
         <div>
           <button class="button is-success" @click="$emit('add')">+ Add</button>
@@ -74,7 +74,7 @@ export default {
   components: { TextField, SelectField },
 
   props: {
-    title: {
+    name: {
       type: String,
       required: true,
     },
@@ -155,7 +155,7 @@ export default {
   watch: {
     perPage(value) {
       this.page = 0;
-      localStorage.setItem(`${this.title}-per-page`, value);
+      localStorage.setItem(`${this.name}-per-page`, value);
     },
   },
 };

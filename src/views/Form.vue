@@ -6,7 +6,10 @@
 
   <button class="btn btn-primary" @click="submit">Save</button>
 
-  <DataTable title="Sample Title" :table-data="currentData" :headers="headers">
+  <DataTable name="sample-table" :table-data="currentData" :headers="headers">
+    <template #title>
+        <h5 class="title is-size-6">Sample Title</h5>
+    </template>
     <template #default="{ entry, index }">
       <tr>
         <td>{{entry.name}}</td>
