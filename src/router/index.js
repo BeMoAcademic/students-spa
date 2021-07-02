@@ -1,12 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Login from '../views/Auth/Login.vue'
+import AuthMiddleware from "@/middleware/AuthMiddleware";
 import Home from '../views/Home.vue'
 import Form from '../views/Form.vue'
 
 const routes = [
+
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/login',
+    name: 'Login',
+    beforeEnter: AuthMiddleware.guest,
+    component: Login
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: ''
   },
   {
     path: '/about',
