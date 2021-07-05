@@ -8,6 +8,14 @@ class AuthMiddleware {
         }
         return next('/login');
     }
+
+    // TODO Complete the logic for student role
+    student(to, from, next) {
+        if (localStorage.getItem('auth')) {
+            return next();
+        }
+        return next('/login');
+    }
 }
 
 export default new AuthMiddleware();

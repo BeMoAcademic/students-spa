@@ -17,11 +17,11 @@
                   <form ref="form">
                     <div class="form-group">
                       <label for="email">Username</label>
-                      <input id="email" type="email" class="form-control" required>
+                      <input id="email" type="email" class="form-control" v-model="form.email" required>
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input id="password" type="password" class="form-control" required>
+                      <input id="password" type="password" class="form-control" v-model="form.password" required>
                     </div>
                     <div class="row">
                       <div class="col-xs-12 col-sm-6">
@@ -36,7 +36,7 @@
                           Password</a>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block" @click.prevent="login">Login</button>
                   </form>
                 </div>
               </div>
@@ -51,14 +51,34 @@
 </template>
 
 <script>
-import HttpService from "../../HttpService.js";
+// import HttpService from "../../HttpService.js";
+import User from "/src/services/resources/User";
 export default {
   name: 'Login',
 
   data() {
     return {
       title: false,
+      form: {
+        email: null,
+        password: null
+      }
     }
   },
+   methods: {
+    login() {
+      // TODO replace this when HTTP service is done
+      User.login(this.form)
+        .then(() => {
+          localStorage.setItem("auth", "true");
+          this.$router.push({ name: "Welcome" });
+        })
+        .catch(error => {
+          if (error.response.status === 422) {
+            this.errors = error.response.data.errors;
+          }
+        });
+    }
+  }
 }
 </script>
