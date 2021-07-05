@@ -1,5 +1,8 @@
 <template>
-    <div v-if="content" v-html="content.text"></div>
+    <div v-if="content">
+      <div v-if="content.text" v-html="content.text.content"></div>
+      <div v-else v-html="content.text.content"></div>
+    </div>
 </template>
 <script>
 import UserDashboard from "/src/services/resources/UserDashboard";
