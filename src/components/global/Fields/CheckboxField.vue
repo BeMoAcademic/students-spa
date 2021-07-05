@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "BaseCheckbox",
+  name: "CheckboxField",
   props: {
     label: {
       type: String,

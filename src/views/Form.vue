@@ -1,12 +1,25 @@
 <template>
-  <BaseInput v-model="forms.input" label="Title" type="text"></BaseInput>
-  <BaseSelect :options="options" v-model="forms.select" />
-  <BaseCheckbox v-model="forms.checkbox" label="Catering" />
-  <BaseTextarea v-model="forms.textarea" label="Catering" />
+  <TextField v-model="forms.input" label="Title" type="text"></TextField>
+  <SelectField :options="options" v-model="forms.select" />
+  <CheckboxField v-model="forms.checkbox" label="Catering" />
+  <TextareaField v-model="forms.textarea" label="Catering" />
 
   <button class="btn btn-primary" @click="submit">Save</button>
 
-  {{ forms }}
+  <DataTable name="sample-table" :table-data="currentData" :headers="headers">
+    <template #title>
+        <h5 class="title is-size-6">Sample Title</h5>
+    </template>
+    <template #default="{ entry, index }">
+      <tr>
+        <td>{{entry.name}}</td>
+        <td>{{entry.age}}</td>
+        </tr>
+    </template>
+    <template #filters v-if="tableIndex === 0">
+      <slot name="filters" />
+    </template>
+  </DataTable>
 </template>
 <script>
 export default {
@@ -20,6 +33,11 @@ export default {
         textarea: "",
       },
       options: ["Item 1", "Item 2", "Item 3"],
+      headers: [{ 'name': 'name', title: "Name", filterable: true }, { title: "Age" }],
+      currentData: [
+        { name: "John Doe", age: 33 },
+        { name: "John Doe", age: 33 },
+      ],
     };
   },
 };

@@ -8,23 +8,27 @@ import camelCase from "lodash/camelCase";
 
 // Requiring global components
 const requireComponent = require.context(
-  "./components/global/Fields",
-  false,
+  "./components/global",
+  true,
   /[A-Z]\w+\.(vue|js)$/
 );
 
 const app = createApp(App);
 
+
 // Injecting global components
 requireComponent.keys().forEach((fileName) => {
   const componentConfig = requireComponent(fileName);
-
+  const fileNameWithoutExtension = fileName.split('/').slice(-1)[0].replace(/\.[^/.]+$/, "");
   const componentName = upperFirst(
-    camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, "$1"))
+    camelCase(fileNameWithoutExtension)
   );
 
   app.component(componentName, componentConfig.default || componentConfig);
 });
+
+
+
 
 app
   .use(store)

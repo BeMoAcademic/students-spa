@@ -1,18 +1,16 @@
 <template>
-    <label :for="id">{{ label }}</label>
-    <input
+    <label for="">{{ label }}</label>
+    <textarea
         :placeholder="label"
         @input="$emit('update:modelValue', $event.target.value)"
         v-bind="$attrs"
-        :value="modelValue">
-    <p class="help is-danger" v-if="error" v-text="error"/>
+        :value="modelValue"> </textarea>
 </template>
 
 <script>
 import FieldMixin from "./FieldMixin";
-
 export default {
-    name: 'BaseInput',
+    name: 'TextareaField',
     mixins: [FieldMixin]
 }
 </script>
