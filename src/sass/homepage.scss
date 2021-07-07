@@ -8,30 +8,147 @@
       height: 9rem;
     }
   }
+
   &__main {
-      display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0 0;
+    grid-template-areas:
+    "navigation"
+    "main";
+    background-color: #EEEEF4;
     @include breakpoint-up(md) {
-      display: block;
+      width: 90vw;
+      margin: auto;
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      grid-template-rows: 1fr;
+      gap: 0 0;
+      grid-template-areas:
+    "navigation"
+    "main";
     }
-    &__navigation-bar{
-      background-color: rgba(171, 171, 199, 0.6);
+  }
+
+  &__left-grid {
+    &__navigation-bar {
+      background-color: rgba(171, 171, 199, 0.2);
       border-radius: 15px;
-      height: 70vh;
       z-index: 2;
       width: 90vw;
       margin-top: -4rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      padding-bottom: 1rem;
       @include breakpoint-up(md) {
+        text-align: left;
         width: 35vw;
-        margin-left: 3rem;
-        margin-top: -5rem;
+        margin: -5rem 0 0;
+        padding-left: 1rem;
       }
 
-      h2 {
+      h1 {
         color: $white;
-        padding-top: 1rem;
-        text-align: center;
+        padding: 1rem 0;
+        @include breakpoint-up(md) {
+          padding-top: 1.5rem;
+        }
+      }
+
+      hr {
+        width: 90%;
+        border: 2px solid $dark-gray;
+        margin: .5rem auto;
+        @include breakpoint-up(md) {
+          margin: unset;
+        }
+      }
+
+      .dotted {
+        color: transparent;
+        border: none;
+        border-top: 2px dashed $dark-gray;
+
+        &:last-of-type {
+          display: none;
+        }
+      }
+    }
+
+    @include breakpoint-up(md) {
+      &__arrow-right {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        border: .1rem solid $blue;
+        border-radius: 50%;
+
+        &:after {
+          content: '';
+          display: inline-block;
+          // margin-top: .5rem;
+          // margin-left: .2rem;
+          width: .8rem;
+          height: .8rem;
+          border-top: .1rem solid $blue;
+          border-right: .1rem solid $blue;
+          -moz-transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg) translate(40%);
+
+        }
+      }
+    }
+
+    &__labels {
+      margin-top: 1rem;
+      color: $blue;
+      @include breakpoint-up(md) {
+        display: inline-block;
+        font-size: 1.3rem;
+        margin-left: 1rem;
+      }
+    }
+
+    &__contact {
+      background-color: $blue;
+      color: $white;
+      width: 90vw;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 25px;
+      @include breakpoint-up(md) {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        width: 35vw;
+        margin-left: 0;
+        padding-left: 1rem;
       }
     }
   }
+
+  &__right-grid {
+    &__content {
+      margin-top: -3rem;
+    }
+
+    &__instructions {
+      display: flex;
+
+      &__text {
+        padding: 1rem 1rem 0;
+      }
+      &__image {
+        width: 12rem;
+        z-index: 2;
+        @include breakpoint-up(md) {
+          margin-top: -3rem;
+          margin-left: 3rem;
+        }
+      }
+    }
+  }
+
 }

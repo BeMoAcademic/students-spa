@@ -1,5 +1,5 @@
 import AuthMiddleware from "@/middleware/AuthMiddleware";
-import Programs from "@/views/student/Programs";
+//import Programs from "@/views/student/Programs";
 import Home from "@/views/Home";
 
 export default [
@@ -9,11 +9,11 @@ export default [
         // beforeEnter: AuthMiddleware.Student,
         component: Home
     },
-    {
+    /*{
         path: '/student/programs',
         // beforeEnter: AuthMiddleware.Student,
         name: 'Programs',
         component: Programs
-    }
+    }*/
 
 ]

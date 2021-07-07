@@ -28,9 +28,9 @@ export default {
         { path: "/forms",
           name: "Forms"
         },
-        { path: "/student/programs",
+       /* { path: "/student/programs",
           name: "Programs"
-        }
+        }*/
       ]
     }
   }
