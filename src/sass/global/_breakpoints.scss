@@ -9,7 +9,7 @@
     @media (min-width: 992px) { @content; }
   }
   @if $point == md {
-    @media (min-width: 425px) { @content; }
+    @media (min-width: 768px) { @content; }
   }
   @if $point == sm {
     @media (min-width: 0) { @content; }

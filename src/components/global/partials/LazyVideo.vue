@@ -51,14 +51,19 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .lazy-video {
-  z-index: 1!important;
+  z-index: 1 !important;
 }
 
 .home-video {
   width: 90%;
-  height: 30vh;
+  min-height: 30vh;
   margin-left: 5%;
+
+  @include breakpoint-up(lg) {
+    width: 80%;
+    margin-left: 10%;
+  }
 }
 </style>
